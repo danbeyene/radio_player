@@ -70,8 +70,8 @@ class MediaSessionCallback(private val radioPlayerService: RadioPlayerService) :
         return Futures.immediateFuture(
             MediaSession.MediaItemsWithStartPosition(
                 emptyList(),
-                MediaSession.MediaItemsWithStartPosition.DEFAULT_START_INDEX,
-                MediaSession.MediaItemsWithStartPosition.DEFAULT_START_POSITION_MS
+                0,  // Default start index
+                0L  // Default start position in milliseconds
             )
         )
     }
