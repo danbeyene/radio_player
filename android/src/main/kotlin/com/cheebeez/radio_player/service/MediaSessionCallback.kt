@@ -62,6 +62,20 @@ class MediaSessionCallback(private val radioPlayerService: RadioPlayerService) :
         return super.onConnect(session, controller)
     }
 
+    /// Called when the system wants to resume playback (e.g. from media button).
+    override fun onPlaybackResumption(
+        mediaSession: MediaSession,
+        controller: MediaSession.ControllerInfo
+    ): ListenableFuture<MediaSession.MediaItemsWithStartPosition> {
+        return Futures.immediateFuture(
+            MediaSession.MediaItemsWithStartPosition(
+                emptyList(),
+                MediaSession.MediaItemsWithStartPosition.DEFAULT_START_INDEX,
+                MediaSession.MediaItemsWithStartPosition.DEFAULT_START_POSITION_MS
+            )
+        )
+    }
+
     /// Called when a MediaController sends a custom command to this MediaSession.
     override fun onCustomCommand(
         session: MediaSession,
