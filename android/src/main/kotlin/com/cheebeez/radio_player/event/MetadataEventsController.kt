@@ -46,6 +46,9 @@ class MetadataEventsController : EventChannelController, Player.Listener {
 
                 if (mediaController != null) {
                     mediaController?.addListener(this@MetadataEventsController)
+                    
+                    // Emit current metadata immediately
+                    mediaController?.mediaMetadata?.let { onMediaMetadataChanged(it) }
                 }
             }
 

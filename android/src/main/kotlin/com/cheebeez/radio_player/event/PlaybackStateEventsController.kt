@@ -63,6 +63,9 @@ class PlaybackStateEventsController : EventChannelController, Player.Listener {
 
                 if (mediaController != null) {
                     mediaController?.addListener(this@PlaybackStateEventsController)
+                    
+                    // Emit current state immediately
+                    updateAndSendPlaybackState()
                 }
             }
 
